@@ -1,7 +1,7 @@
 /*
  * Created By Ananda Bayu Fauzan.
  */
-package Tugas2_19Feb2020_Exceptions.A_Currency_Converter;
+package main;
 
 /**
  *
@@ -22,6 +22,7 @@ public class CurrencyConverter{
         frame.setSize(500,500);
         RatePanel ratePanel = new RatePanel ();
         frame.getContentPane().add(ratePanel);
+        frame.getContentPane().setLayout(new GridLayout(2, 1));
         frame.setVisible(true);
     }
 }

@@ -1,7 +1,7 @@
 /*
  * Created By Ananda Bayu Fauzan.
  */
-package Tugas2_19Feb2020_Exceptions.A_Currency_Converter;
+package main;
 
 /**
  *
@@ -42,23 +42,43 @@ public class RatePanel extends JPanel{
         rate = new double [] {0.0, 1.2103, 0.7351,
                             0.0091, 0.6969,
                             0.0222, 0.0880};
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add (title,gbc);
         
-        add (title);
+        comboBox = new JComboBox(currencyName);
+        
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.ipady = 10;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        add(comboBox, gbc);
         
         textField = new JTextField();
         textField.setPreferredSize( new Dimension( 50, 30 ) );
-        textField.addActionListener(new ComboListener());
-        add(textField);
         
-        comboBox = new JComboBox(currencyName);
-        comboBox.addActionListener(new ComboListener());
-        add(comboBox);
+        gbc.ipady = 10;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        add(textField, gbc);
+        
+        
         
         result = new JLabel (" ------------ ");
-        add (result);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        add (result, gbc);
         Dimension sizeLabel = result.getPreferredSize();
         result.setBounds(100, 3000, sizeLabel.width, sizeLabel.height);
         
+        
+        comboBox.addActionListener(new ComboListener());
+        textField.addActionListener(new ComboListener());
     }
     // ******************************************************
     // Represents an action listener for the combo box.
@@ -75,9 +95,13 @@ public class RatePanel extends JPanel{
             
             /*result.setText ("1 " + currencyName[index] +
                         " = " + rate[index] + " U.S. Dollars");*/
-            result.setText(textField.getText() + " " + currencyName[index] +
+            try {
+                result.setText(textField.getText() + " " + currencyName[index] +
                         " = " + Integer.parseInt(textField.getText()) 
                     * rate[index] + " U.S. Dollars");
+            } catch (NumberFormatException e) {
+                
+            }
         }
     }
 }
