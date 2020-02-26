@@ -1,7 +1,7 @@
 /*
  * Created By Ananda Bayu Fauzan.
  */
-package main;
+package Tugas2_19Feb2020_Exceptions.A_Currency_Converter;
 
 /**
  *
